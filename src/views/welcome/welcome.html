@@ -1,3 +1,19 @@
 <template>
-    <h1>Welcome</h1>
+    <master-detail is-master-visible.bind="isMasterVisible">
+        <div class="master-container" slot="master">
+            <pragma-options-toolbar dropdown-ites.bind="masterListOptions"></pragma-options-toolbar>
+            <master-list-container grouping-items.bind="groupingOrder" list-template.bind="listTemplate" cache-id.bind="cacheId" selected-id.two-way="selectedId"></master-list-container>
+        </div>
+
+        <div slot="detail">
+            <pragma-options-toolbar dropdown-ites.bind="detailOptions">
+                <div slot="items">
+                    <input type="checkbox" checked.bind="isMasterVisible"/>
+                </div>
+            </pragma-options-toolbar>
+
+            <div ref="detailsElement" class="dr-container"></div>
+        </div>
+
+    </master-detail>
 </template>
