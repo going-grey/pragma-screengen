@@ -19,7 +19,8 @@ export function configure(aurelia) {
                 'pragma-views/components/master-list-container/master-list-container',
                 'pragma-views/components/pragma-options-toolbar/pragma-options-toolbar',
                 'pragma-views/components/pragma-dropdown-menu/pragma-dropdown-menu',
-                'pragma-views/components/pragma-template/pragma-template'
+                'pragma-views/components/pragma-template/pragma-template',
+                'pragma-views/components/group/group'
             )
             .plugin("aurelia-dialog");
 

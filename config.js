@@ -99,7 +99,7 @@ System.config({
     "aurelia-pal-browser": "npm:aurelia-pal-browser@1.2.1",
     "pragma-menu": "npm:pragma-menu@1.0.17",
     "pragma-tabsheet": "npm:pragma-tabsheet@1.0.23",
-    "pragma-views": "npm:pragma-views@0.0.31",
+    "pragma-views": "npm:pragma-views@0.0.36",
     "npm:aurelia-binding@1.2.1": {
       "aurelia-logging": "npm:aurelia-logging@1.3.1",
       "aurelia-metadata": "npm:aurelia-metadata@1.0.3",
@@ -262,7 +262,7 @@ System.config({
       "aurelia-framework": "npm:aurelia-framework@1.1.2",
       "aurelia-polyfills": "npm:aurelia-polyfills@1.2.1"
     },
-    "npm:pragma-views@0.0.31": {
+    "npm:pragma-views@0.0.36": {
       "pragma-menu": "npm:pragma-menu@1.0.17",
       "pragma-tabsheet": "npm:pragma-tabsheet@1.0.23"
     }
