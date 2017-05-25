@@ -1,5 +1,5 @@
 import {inject, bindable} from 'aurelia-framework';
-import {DynamicViewLoader, listTemplate1, populateTemplate, GroupWorker, TemplateParser} from 'pragma-views';
+import {DynamicViewLoader, listTemplate1, populateTemplate, GroupWorker, TemplateParser, isMobile} from 'pragma-views';
 
 import {staffOrderGroupItems} from './../../resources/staff-grouping';
 import {staffMembers}  from './../../resources/staff-data';
@@ -148,6 +148,10 @@ export class Welcome {
      */
     selectedIdChanged() {
         this.model = staffMembers.find(item => item.id == this.selectedId);
+
+        if (isMobile()) {
+            this.isMasterVisible = false;
+        }
     }
 
     /**
