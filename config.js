@@ -90,7 +90,6 @@ System.config({
       "npm:aurelia-templating@1.4.2/aurelia-templating.js"
     ]
   },
-
   map: {
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@2.0.1",
     "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.3.1",
@@ -100,7 +99,7 @@ System.config({
     "aurelia-pal-browser": "npm:aurelia-pal-browser@1.2.1",
     "pragma-menu": "npm:pragma-menu@1.0.17",
     "pragma-tabsheet": "npm:pragma-tabsheet@1.0.23",
-    "pragma-views": "npm:pragma-views@0.0.30",
+    "pragma-views": "npm:pragma-views@0.0.31",
     "npm:aurelia-binding@1.2.1": {
       "aurelia-logging": "npm:aurelia-logging@1.3.1",
       "aurelia-metadata": "npm:aurelia-metadata@1.0.3",
@@ -263,7 +262,7 @@ System.config({
       "aurelia-framework": "npm:aurelia-framework@1.1.2",
       "aurelia-polyfills": "npm:aurelia-polyfills@1.2.1"
     },
-    "npm:pragma-views@0.0.30": {
+    "npm:pragma-views@0.0.31": {
       "pragma-menu": "npm:pragma-menu@1.0.17",
       "pragma-tabsheet": "npm:pragma-tabsheet@1.0.23"
     }

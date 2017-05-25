@@ -5,12 +5,6 @@ import {staffOrderGroupItems} from './../../resources/staff-grouping';
 import {staffMembers}  from './../../resources/staff-data';
 import {staffTemplate} from './../../resources/staff-template';
 
-/**
- * TODO:
- * 1. add items for master list
- * 1. add items for detail list
- */
-
 @inject(Element, DynamicViewLoader, GroupWorker)
 export class Welcome {
     /**
@@ -26,7 +20,8 @@ export class Welcome {
     /**
      * Record id of the resource we are working with e.g. workorder id, staff id...
      * When this is set, it kicks off a process to fetch the model, see function selectedIdChanged
-     */@bindable selectedId;
+     */
+    @bindable selectedId;
 
     /**
      * Options used on the master list drop down menu
@@ -64,6 +59,16 @@ export class Welcome {
     @bindable isMasterVisible;
 
     /**
+     * What action was selected on master toolbar
+     */
+    @bindable masterToolbarSelectedId;
+
+    /**
+     * What action was selected on the details toolbar
+     */
+    @bindable detailToolbarSelectedId;
+
+    /**
      * constructor
      * @param element: DOMElement
      * @param dynamicViewLoader: DynamicViewLoader
@@ -91,8 +96,27 @@ export class Welcome {
      * Aurelia life cycle event
      */
     attached() {
-        this.groupWorker.createCache(this.cacheId, staffMembers);
+        this.refreshData();
         this.templateParser.parse(staffTemplate).then(html => this.changeDetailTemplate(html));
+
+        this.refreshDataHandler = this.refreshData.bind(this);
+        this.masterListOptions = [
+            {
+                id: 1,
+                title: "Refresh",
+                iconName: null,
+                call: this.refreshDataHandler
+            }
+        ];
+
+        this.detailOptions = [
+            {
+                id: 1,
+                title: "Wazaaap",
+                iconName: "search",
+                call: _ => alert("wazaaap'")
+            }
+        ]
     }
 
     /**
@@ -100,6 +124,16 @@ export class Welcome {
      */
     detached() {
         this.groupWorker.disposeCache(this.cacheId);
+        this.refreshDataHandler = null;
+        this.masterListOptions = null;
+        this.detailOptions = null;
+    }
+
+    /**
+     *
+     */
+    refreshData() {
+        this.groupWorker.createCache(this.cacheId, staffMembers);
     }
 
     /**
@@ -107,5 +141,36 @@ export class Welcome {
      */
     changeDetailTemplate(templateHtml) {
         this.dynamicViewLoader.load(templateHtml, this.detailsElement, this, );
+    }
+
+    /**
+     * Aurelia triggered event when selectedId property changes
+     */
+    selectedIdChanged() {
+        this.model = staffMembers.find(item => item.id == this.selectedId);
+    }
+
+    /**
+     * masterToolbarSelectedId changed, execute the defined function
+     */
+    masterToolbarSelectedIdChanged() {
+        if (this.masterToolbarSelectedId == -1) {
+            return;
+        }
+
+        this.masterListOptions.find(item => item.id == this.masterToolbarSelectedId).call();
+        this.masterToolbarSelectedId == -1
+    }
+
+    /**
+     * detailToolbarSelectedIdChanged changed, execute the defined function
+     */
+    detailToolbarSelectedIdChanged() {
+        if (this.detailToolbarSelectedId == -1) {
+            return;
+        }
+
+        this.detailOptions.find(item => item.id == this.detailToolbarSelectedId).call();
+        this.detailToolbarSelectedId == -1
     }
 }

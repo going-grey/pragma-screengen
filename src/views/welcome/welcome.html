@@ -1,13 +1,17 @@
 <template>
     <master-detail is-master-visible.bind="isMasterVisible">
         <div class="master-container" slot="master">
-            <pragma-options-toolbar dropdown-ites.bind="masterListOptions"></pragma-options-toolbar>
+            <pragma-options-toolbar dropdown-items.bind="masterListOptions" selected-id.two-way="masterToolbarSelectedId">
+                <div slot="items" class="default-padding-left">
+                    <h4>Staff Members</h4>
+                </div>
+            </pragma-options-toolbar>
             <master-list-container grouping-items.bind="groupingOrder" list-template.bind="listTemplate" cache-id.bind="cacheId" selected-id.two-way="selectedId"></master-list-container>
         </div>
 
         <div slot="detail">
-            <pragma-options-toolbar dropdown-ites.bind="detailOptions">
-                <div slot="items">
+            <pragma-options-toolbar dropdown-items.bind="detailOptions" selected-id.two-way="detailToolbarSelectedId">
+                <div slot="items" class="default-padding-left">
                     <input type="checkbox" checked.bind="isMasterVisible"/>
                 </div>
             </pragma-options-toolbar>

@@ -29,7 +29,7 @@
       "aurelia-framework": "npm:aurelia-framework@^1.1.2",
       "pragma-menu": "npm:pragma-menu@^1.0.17",
       "pragma-tabsheet": "npm:pragma-tabsheet@^1.0.23",
-      "pragma-views": "npm:pragma-views@^0.0.30"
+      "pragma-views": "npm:pragma-views@^0.0.31"
     },
     "devDependencies": {}
   }
