@@ -1,8 +1,9 @@
 import {inject, bindable} from 'aurelia-framework';
-import {DynamicViewLoader, listTemplate1, populateTemplate, GroupWorker} from 'pragma-views';
+import {DynamicViewLoader, listTemplate1, populateTemplate, GroupWorker, TemplateParser} from 'pragma-views';
 
 import {staffOrderGroupItems} from './../../resources/staff-grouping';
 import {staffMembers}  from './../../resources/staff-data';
+import {staffTemplate} from './../../resources/staff-template';
 
 /**
  * TODO:
@@ -75,6 +76,8 @@ export class Welcome {
         this.groupingOrder = staffOrderGroupItems;
         this.cacheId = "temp-cache";
         this.isMasterVisible = true;
+        this.templateParser = new TemplateParser("model");
+
         this.listTemplate = populateTemplate(listTemplate1, {
             "__field1__": "${id}",
             "__field2__": "",
@@ -89,6 +92,7 @@ export class Welcome {
      */
     attached() {
         this.groupWorker.createCache(this.cacheId, staffMembers);
+        this.templateParser.parse(staffTemplate).then(html => this.changeDetailTemplate(html));
     }
 
     /**
@@ -96,5 +100,12 @@ export class Welcome {
      */
     detached() {
         this.groupWorker.disposeCache(this.cacheId);
+    }
+
+    /**
+     * Display this html in the details page
+     */
+    changeDetailTemplate(templateHtml) {
+        this.dynamicViewLoader.load(templateHtml, this.detailsElement, this, );
     }
 }

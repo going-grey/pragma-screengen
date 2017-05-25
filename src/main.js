@@ -4,7 +4,7 @@ export function configure(aurelia) {
             .standardConfiguration()
             .developmentLogging()
             .globalResources(
-                'pragma-menu/pragma-menu',
+                'pragma-tabsheet/pragma-tabsheet',
                 'pragma-views/components/menu/menu',
                 'pragma-views/components/input-composite/input-composite',
                 'pragma-views/components/master-detail/master-detail',
