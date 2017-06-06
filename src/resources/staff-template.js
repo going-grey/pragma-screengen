@@ -4,12 +4,5 @@ export const staffTemplate =
     "fields": [
     ],
     "body": {
-        "tabsheet": [
-            {
-                "id": "tabHeader",
-                "title": "Header",
-                "groups": []
-            }
-        ]
     }
 };
